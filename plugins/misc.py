@@ -168,6 +168,18 @@ async def help(client, message):
             InlineKeyboardButton('sᴏɴɢ ', callback_data='songs'),
             InlineKeyboardButton('ᴊsᴏɴ ', callback_data='son')
             ],[
+            InlineKeyboardButton('🚶‍♀️ ʙᴀᴄᴋ', callback_data='start'),
+            InlineKeyboardButton('ꜱᴛᴀᴛᴜꜱ 🎛️', callback_data='stats'),
+            InlineKeyboardButton('ɴᴇxᴛ ➡️', callback_data='p')
+         ]]
+         reply_markup = InlineKeyboardMarkup(buttons)
+         await query.message.edit_text(
+            text=script.HELP_TXT.format(query.from_user.mention),
+            reply_markup=reply_markup,
+            parse_mode='html'
+        )
+    elif query.data == "p":
+        buttons = [[
             InlineKeyboardButton('ᴘɪɴ ', callback_data='pin'),
             InlineKeyboardButton('ᴄᴏʀᴏɴᴀ ', callback_data='corona'),
             InlineKeyboardButton('sᴛɪᴄᴋᴇʀ ', callback_data='sticker')
@@ -190,14 +202,29 @@ async def help(client, message):
             ],[
             InlineKeyboardButton('🚶‍♀️ ʙᴀᴄᴋ', callback_data='start'),
             InlineKeyboardButton('ꜱᴛᴀᴛᴜꜱ 🎛️', callback_data='stats'),
-            InlineKeyboardButton('⛔️ ᴄʟᴏꜱᴇ', callback_data='close_data')
+            InlineKeyboardButton('ᴄʟᴏꜱᴇ ⛔️', callback_data='close_data')
         ]]
+        reply1 = await query.message.reply_text(
+            text="□□□"
+        )
+        await asyncio.sleep(0.5)
+        reply2 = await reply1.edit_text(
+            text="■□□"
+        )
+        await asyncio.sleep(0.5)
+        reply3 = await reply2.edit_text(
+            text="■■□"
+        )
+        await asyncio.sleep(0.5)
+        reply4 = await reply3.edit_text(
+            text="■■■"
+        )
+        await reply4.delete()
         reply_markup = InlineKeyboardMarkup(buttons)
-        await message.reply_photo(
-            photo=random.choice(PICS),
-            caption=script.HELP_TXT.format(message.from_user.mention),
+        await query.message.edit_text(
+            text=script.HELP_TXT.format(query.from_user.mention),
             reply_markup=reply_markup,
-            parse_mode='html'
+            parse_mode='html'       
         )
 
 
