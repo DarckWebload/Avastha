@@ -818,6 +818,18 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('sᴏɴɢ ', callback_data='songs'),
             InlineKeyboardButton('ᴊsᴏɴ ', callback_data='son')
             ],[
+            InlineKeyboardButton('🚶‍♀️ ʙᴀᴄᴋ', callback_data='start'),
+            InlineKeyboardButton('ꜱᴛᴀᴛᴜꜱ 🎛️', callback_data='stats'),
+            InlineKeyboardButton('ɴᴇxᴛ ➡️', callback_data='p')
+         ]]
+         reply_markup = InlineKeyboardMarkup(buttons)
+         await query.message.edit_text(
+            text=script.HELP_TXT.format(query.from_user.mention),
+            reply_markup=reply_markup,
+            parse_mode='html'
+        )
+    elif query.data == "p":
+        buttons = [[
             InlineKeyboardButton('ᴘɪɴ ', callback_data='pin'),
             InlineKeyboardButton('ᴄᴏʀᴏɴᴀ ', callback_data='corona'),
             InlineKeyboardButton('sᴛɪᴄᴋᴇʀ ', callback_data='sticker')
